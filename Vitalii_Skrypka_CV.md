@@ -5,7 +5,7 @@
 
 ## Summary
 
-Senior Software Developer with 7+ years of commercial experience in web development and extensive full-stack expertise. Skilled in building reliable, high-quality applications using modern technologies. Demonstrated ability to quickly learn, adapt, and tackle complex challenges. Strong track record in developing systems from scratch, reducing legacy code, and contributing to large-scale migration projects. Experienced with a wide range of front-end and back-end tools, including React.js, Node.js, and AWS.
+Senior Software Developer with 7+ years of commercial experience in web development and extensive full-stack expertise. Skilled in building reliable, high-quality applications using modern technologies. Demonstrated ability to quickly learn, adapt, and tackle complex challenges. Strong track record in developing systems from scratch, reducing legacy code, and contributing to large-scale migration projects. Experienced with a wide range of front-end and back-end tools, including React.js, Node.js, and AWS. Works AI-native, using coding agents and LLMs throughout the development cycle — codebase exploration, implementation, refactoring, testing, and debugging — while keeping architecture, review, and production decisions under engineering control.
 
 ## Education
 

@@ -3,10 +3,37 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Vitalii Skrypka — Senior Full Stack Engineer. React, Node.js, scalable web products and high-load systems." />
+  <meta name="description" content="Vitalii Skrypka — Senior Full Stack Engineer. React, Node.js, scalable web products and high-load systems, built with AI-assisted development and coding agents." />
   <meta name="theme-color" content="#0b0d10" />
   <link rel="icon" href="/vs-logo.svg" type="image/svg+xml" />
   <title>Vitalii Skrypka — Senior Full Stack Engineer</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Vitalii Skrypka",
+    "jobTitle": "Senior Full Stack Engineer",
+    "url": "https://www.vit-skr.dev/",
+    "email": "mailto:vitaliy.skripka23@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Prague",
+      "addressCountry": "CZ"
+    },
+    "sameAs": ["https://www.linkedin.com/in/vitalii-skripka/"],
+    "knowsAbout": [
+      "React",
+      "Node.js",
+      "NestJS",
+      "System architecture",
+      "Scalable web systems",
+      "Performance optimization",
+      "AI-assisted software development",
+      "Coding agents",
+      "Agentic development workflows"
+    ]
+  }
+  </script>
   <style>
 :root {
   --bg: #0b0d10;
@@ -278,6 +305,8 @@ details li { margin: 8px 0; }
 .principle > span { color: var(--muted-2); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
 .principle h3 { margin: 78px 0 12px; font-size: 28px; letter-spacing: -.03em; }
 .principle p { margin: 0; color: var(--muted); max-width: 470px; }
+.principle.wide { grid-column: 1 / -1; min-height: 250px; }
+.principle.wide p { max-width: 760px; }
 
 .stack-section { padding-top: 110px; }
 .stack-grid {
@@ -292,6 +321,15 @@ details li { margin: 8px 0; }
 .stack-group p { margin: 0 0 22px; color: var(--muted-2); font-size: 12px; text-transform: uppercase; letter-spacing: .12em; }
 .stack-group ul { list-style: none; padding: 0; margin: 0; }
 .stack-group li { padding: 8px 0; font-size: 20px; letter-spacing: -.02em; }
+.stack-grid > .stack-group:nth-child(4) { border-right: 0; }
+.stack-group.wide {
+  grid-column: 1 / -1;
+  padding: 28px 0 32px;
+  border-right: 0;
+  border-top: 1px solid var(--line);
+}
+.stack-group.wide ul { display: flex; flex-wrap: wrap; gap: 10px 30px; }
+.stack-group.wide li { padding: 0; font-size: 17px; }
 
 .timeline { border-top: 1px solid var(--line); }
 .timeline-row {
@@ -305,6 +343,7 @@ details li { margin: 8px 0; }
 .timeline-row time { color: var(--muted-2); font-size: 13px; }
 .timeline-row strong { font-size: 17px; }
 .timeline-row span { color: var(--muted); }
+.timeline-row.ai-row { grid-template-columns: 260px 1fr; align-items: start; }
 
 .closing {
   margin-top: 60px;
@@ -379,6 +418,8 @@ details li { margin: 8px 0; }
   .stack-group:last-child { border-bottom: 0; }
   .timeline-row { grid-template-columns: 1fr; gap: 5px; }
   .timeline-row span { grid-column: 1; }
+  .timeline-row.ai-row { grid-template-columns: 1fr; }
+  .stack-group.wide { border-top: 0; }
   .closing { padding: 54px 26px; margin-top: 20px; }
   .closing-meta, .site-footer { flex-direction: column; }
 }
@@ -414,6 +455,7 @@ details li { margin: 8px 0; }
     <nav class="nav" aria-label="Primary navigation">
       <a href="#experience">Experience</a>
       <a href="#engineering">Engineering</a>
+      <a href="#ai">AI workflow</a>
       <a href="#stack">Stack</a>
       <a href="https://www.linkedin.com/in/vitalii-skripka/" target="_blank" rel="noopener">LinkedIn</a>
       <a class="nav-cta" href="Vitalii_Skrypka_CV.pdf" download>CV <span>↗</span></a>
@@ -428,6 +470,7 @@ details li { margin: 8px 0; }
         <p class="hero-lead">
           I design and build scalable web products — from frontend and backend
           to infrastructure, architecture, and long-term maintainability.
+          Coding agents are part of how I work; the engineering decisions stay mine.
         </p>
         <div class="hero-actions">
           <a class="button primary" href="#experience">View experience</a>
@@ -446,7 +489,12 @@ details li { margin: 8px 0; }
           <small>profile.ts</small>
         </div>
         <pre><code><span class="code-muted">const</span> engineer = {
-  focus: [<span class="code-string">"React"</span>, <span class="code-string">"Node.js"</span>],
+  focus: [
+    <span class="code-string">"React"</span>,
+    <span class="code-string">"Node.js"</span>,
+    <span class="code-string">"AI-assisted engineering"</span>
+  ],
+  workflow: <span class="code-string">"human + agents"</span>,
   builds: <span class="code-string">"scalable products"</span>,
   scope: <span class="code-string">"frontend → infra"</span>,
   location: <span class="code-string">"Prague"</span>,
@@ -651,12 +699,47 @@ details li { margin: 8px 0; }
           <h3>Keep systems clean</h3>
           <p>I care about maintainability, refactoring, sensible abstractions, design patterns, and helping teammates grow.</p>
         </article>
+        <article class="principle wide reveal">
+          <span>05</span>
+          <h3>AI-native workflow</h3>
+          <p>Coding agents and LLMs are part of my daily loop — codebase exploration, well-scoped implementation, refactors, tests, debugging, and research. Architecture, review, and what goes to production stay my call.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="ai" class="section section-shell">
+      <div class="section-heading reveal">
+        <span>03 / AI in practice</span>
+        <h2>AI as part of the<br />engineering workflow.</h2>
+      </div>
+
+      <div class="timeline reveal">
+        <div class="timeline-row ai-row">
+          <strong>Codebase exploration</strong>
+          <span>Understand unfamiliar systems, trace dependencies, and investigate behavior faster.</span>
+        </div>
+        <div class="timeline-row ai-row">
+          <strong>Implementation</strong>
+          <span>Delegate well-scoped work to agents while I own the architecture, interfaces, and constraints.</span>
+        </div>
+        <div class="timeline-row ai-row">
+          <strong>Refactoring</strong>
+          <span>Repetitive migrations, cleanup, typing, and consistency work across larger codebases.</span>
+        </div>
+        <div class="timeline-row ai-row">
+          <strong>Testing &amp; debugging</strong>
+          <span>Generate cases, analyze logs and failures, propose fixes — then verify them myself.</span>
+        </div>
+        <div class="timeline-row ai-row">
+          <strong>Research &amp; documentation</strong>
+          <span>API and library exploration, implementation planning, and keeping engineering docs current.</span>
+        </div>
       </div>
     </section>
 
     <section id="stack" class="section section-shell stack-section">
       <div class="section-heading reveal">
-        <span>03 / Engineering stack</span>
+        <span>04 / Engineering stack</span>
         <h2>Tools I use to<br />ship products.</h2>
       </div>
 
@@ -677,12 +760,22 @@ details li { margin: 8px 0; }
           <p>Infrastructure</p>
           <ul><li>AWS</li><li>GCP</li><li>Docker</li><li>Kubernetes</li></ul>
         </div>
+        <div class="stack-group wide">
+          <p>AI-assisted engineering</p>
+          <ul>
+            <li>Coding agents</li>
+            <li>LLM-assisted development</li>
+            <li>Agentic workflows</li>
+            <li>Codebase exploration</li>
+            <li>Automated refactoring &amp; testing</li>
+          </ul>
+        </div>
       </div>
     </section>
 
     <section class="section section-shell timeline-section">
       <div class="section-heading reveal">
-        <span>04 / Timeline</span>
+        <span>05 / Timeline</span>
         <h2>A career built across<br />product stages.</h2>
       </div>
 
@@ -708,7 +801,7 @@ details li { margin: 8px 0; }
 
   <footer class="site-footer section-shell">
     <span>© <span id="year"></span> Vitalii Skrypka</span>
-    <span>React · Node.js · Product Engineering</span>
+    <span>React · Node.js · AI-assisted Product Engineering</span>
   </footer>
 
   <script>
