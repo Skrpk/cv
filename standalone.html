@@ -230,16 +230,6 @@ button, input, textarea, select { font: inherit; }
   border-bottom: 1px solid var(--line);
   transition: background .25s ease;
 }
-.experience-card.featured { position: relative; }
-.experience-card.featured::after {
-  content: "CURRENT";
-  position: absolute;
-  right: 0;
-  top: 12px;
-  color: var(--accent);
-  font-size: 10px;
-  letter-spacing: .16em;
-}
 .experience-index { color: var(--muted-2); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; padding-top: 7px; }
 .experience-main { min-width: 0; }
 .experience-head { display: flex; justify-content: space-between; gap: 28px; align-items: flex-start; }
@@ -380,7 +370,6 @@ details li { margin: 8px 0; }
   .experience-index { padding-top: 0; }
   .experience-head { flex-direction: column; gap: 6px; }
   .experience-head time { padding-top: 0; }
-  .experience-card.featured::after { display: none; }
   .impact { grid-template-columns: 1fr; padding: 16px; }
   .principles-grid { grid-template-columns: 1fr; }
   .principle { min-height: 250px; }
@@ -492,37 +481,8 @@ details li { margin: 8px 0; }
       </div>
 
       <div class="experience-list">
-        <article class="experience-card featured reveal">
-          <div class="experience-index">01</div>
-          <div class="experience-main">
-            <div class="experience-head">
-              <div>
-                <p class="company">Sigma Software</p>
-                <h3>Fintech B2B Platform</h3>
-              </div>
-              <time>Jan 2026 — Present</time>
-            </div>
-            <p class="experience-summary">
-              Fintech platform serving European business needs, with large-scale
-              software components built primarily with React and Node.js.
-            </p>
-            <div class="chips">
-              <span>React</span><span>Node.js</span><span>Architecture</span><span>Mentoring</span>
-            </div>
-            <details>
-              <summary>Responsibilities <span>+</span></summary>
-              <ul>
-                <li>Design and implement large-scale software solutions and components across multiple technologies.</li>
-                <li>Follow engineering best practices and company and client guidelines.</li>
-                <li>Provide supervisory, advisory, and coaching support for less-experienced engineers.</li>
-                <li>Promote clean code, design patterns, and sound software engineering principles.</li>
-              </ul>
-            </details>
-          </div>
-        </article>
-
         <article class="experience-card reveal">
-          <div class="experience-index">02</div>
+          <div class="experience-index">01</div>
           <div class="experience-main">
             <div class="experience-head">
               <div>
@@ -578,7 +538,7 @@ details li { margin: 8px 0; }
         </article>
 
         <article class="experience-card reveal">
-          <div class="experience-index">03</div>
+          <div class="experience-index">02</div>
           <div class="experience-main">
             <div class="experience-head">
               <div>
@@ -608,7 +568,7 @@ details li { margin: 8px 0; }
         </article>
 
         <article class="experience-card reveal">
-          <div class="experience-index">04</div>
+          <div class="experience-index">03</div>
           <div class="experience-main">
             <div class="experience-head">
               <div>
@@ -635,7 +595,7 @@ details li { margin: 8px 0; }
         </article>
 
         <article class="experience-card reveal">
-          <div class="experience-index">05</div>
+          <div class="experience-index">04</div>
           <div class="experience-main">
             <div class="experience-head">
               <div>
@@ -727,7 +687,6 @@ details li { margin: 8px 0; }
       </div>
 
       <div class="timeline reveal">
-        <div class="timeline-row"><time>2026 — Present</time><strong>Sigma Software</strong><span>Fintech B2B Platform</span></div>
         <div class="timeline-row"><time>2025 — 2026</time><strong>Finloo</strong><span>Affiliate Marketing Platform</span></div>
         <div class="timeline-row"><time>2023 — 2025</time><strong>Techery</strong><span>SaaS & E-commerce</span></div>
         <div class="timeline-row"><time>2021 — 2022</time><strong>Moonactive</strong><span>High-load Backend</span></div>

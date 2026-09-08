@@ -1,7 +1,7 @@
 # Vitalii Skrypka
 
 **Location:** Prague, Czechia  
-**Website:** [vit-skr.dev](https://www.vit-skr.dev/)
+**LinkedIn:** [LinkedIn](https://www.linkedin.com/in/vitalii-skripka/)
 
 ## Summary
 
@@ -14,23 +14,9 @@ Kharkiv National University of Radio Electronics — Kharkiv, Ukraine
 
 ## Project Experience
 
-### Sigma Software — Fintech B2B Platform
-
-**Dates:** January 2026 – Present
-
-Fintech B2B platform designed to support the needs of European businesses.
-
-**Responsibilities:**
-- Design and implement large-scale software solutions and components using multiple technologies, with a primary focus on React and Node.js.
-- Follow best engineering practices and company and client guidelines.
-- Play supervisory, advisory, and coaching roles for less-experienced engineers on the team.
-- Promote clean code, design patterns, and software engineering principles.
-
----
-
 ### Senior Full Stack Developer — Finloo
 
-**Dates:** July 2025 – January 2026
+**Dates:** July 2025 – Present
 
 On-premise affiliate marketing platform with source and offer management, retention tooling, and an admin panel. Designed and built the entire project from scratch, including frontend, backend, and infrastructure. The platform handles up to **20,000 visitors per day**.
 
