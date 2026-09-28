@@ -1,7 +1,9 @@
 # Vitalii Skrypka
 
 **Location:** Prague, Czechia  
-**LinkedIn:** [LinkedIn](https://www.linkedin.com/in/vitalii-skripka/)
+**Email:** [vitaliy.skripka23@gmail.com](mailto:vitaliy.skripka23@gmail.com)  
+**LinkedIn:** [LinkedIn](https://www.linkedin.com/in/vitalii-skripka/)  
+**GitHub:** [github.com/Skrpk](https://github.com/Skrpk)
 
 ## Summary
 
