@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Vitalii Skrypka — Senior Full Stack Engineer. React, Node.js, scalable web products and high-load systems, built with AI-assisted development and coding agents." />
+  <meta name="description" content="Vitalii Skrypka — Senior Full Stack Engineer. React, Node.js, scalable web products and high-load systems, built with Claude Code, MCP and AI-assisted development." />
   <meta name="theme-color" content="#0b0d10" />
   <link rel="icon" href="/vs-logo.svg" type="image/svg+xml" />
   <title>Vitalii Skrypka — Senior Full Stack Engineer</title>
@@ -568,7 +568,7 @@ details li { margin: 8px 0; }
               </div>
             </div>
             <div class="chips">
-              <span>NestJS</span><span>React</span><span>Vite</span><span>Docker</span><span>MySQL</span><span>Performance</span><span>Anti-bot</span>
+              <span>NestJS</span><span>React</span><span>Vite</span><span>Docker</span><span>MySQL</span><span>Performance</span><span>Anti-bot</span><span>Claude Code</span><span>MCP</span>
             </div>
             <details>
               <summary>Responsibilities <span>+</span></summary>
@@ -582,6 +582,7 @@ details li { margin: 8px 0; }
                 <li>Built bot detection and filtering that has blocked over 200,000 bot sessions, keeping traffic data and affiliate payouts clean.</li>
                 <li>Discussed, designed, and implemented new product features.</li>
                 <li>Tracked, investigated, and fixed production issues.</li>
+                <li>Built the project's AI infrastructure: MCP servers exposing the database, Grafana, and GitHub to Claude Code, so agents can query production metrics, investigate issues, implement features, and write tests against real project context.</li>
               </ul>
             </details>
           </div>
@@ -704,7 +705,7 @@ details li { margin: 8px 0; }
         <article class="principle wide reveal">
           <span>05</span>
           <h3>AI-native workflow</h3>
-          <p>Coding agents and LLMs are part of my daily loop — codebase exploration, well-scoped implementation, refactors, tests, debugging, and research. Architecture, review, and what goes to production stay my call.</p>
+          <p>Claude Code, Cursor and other agents are part of my daily loop — codebase exploration, well-scoped implementation, refactors, tests, debugging, and research. I also build the MCP infrastructure that gives them real project context. Architecture, review, and what goes to production stay my call.</p>
         </article>
       </div>
     </section>
@@ -736,6 +737,10 @@ details li { margin: 8px 0; }
           <strong>Research &amp; documentation</strong>
           <span>API and library exploration, implementation planning, and keeping engineering docs current.</span>
         </div>
+        <div class="timeline-row ai-row">
+          <strong>AI infrastructure</strong>
+          <span>MCP servers wiring database, Grafana and GitHub into Claude Code, so agents work against production context instead of guesses.</span>
+        </div>
       </div>
     </section>
 
@@ -765,8 +770,9 @@ details li { margin: 8px 0; }
         <div class="stack-group wide">
           <p>AI-assisted engineering</p>
           <ul>
-            <li>Coding agents</li>
-            <li>LLM-assisted development</li>
+            <li>Claude Code</li>
+            <li>Cursor</li>
+            <li>MCP servers</li>
             <li>Agentic workflows</li>
             <li>Codebase exploration</li>
             <li>Automated refactoring &amp; testing</li>

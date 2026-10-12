@@ -7,7 +7,7 @@
 
 ## Summary
 
-Senior Software Developer with 7+ years of commercial experience in web development and extensive full-stack expertise. Skilled in building reliable, high-quality applications using modern technologies. Demonstrated ability to quickly learn, adapt, and tackle complex challenges. Strong track record in developing systems from scratch, reducing legacy code, and contributing to large-scale migration projects. Experienced with a wide range of front-end and back-end tools, including React.js, Node.js, and AWS. Works AI-native, using coding agents and LLMs throughout the development cycle — codebase exploration, implementation, refactoring, testing, and debugging — while keeping architecture, review, and production decisions under engineering control.
+Senior Software Developer with 7+ years of commercial experience in web development and extensive full-stack expertise. Skilled in building reliable, high-quality applications using modern technologies. Demonstrated ability to quickly learn, adapt, and tackle complex challenges. Strong track record in developing systems from scratch, reducing legacy code, and contributing to large-scale migration projects. Experienced with a wide range of front-end and back-end tools, including React.js, Node.js, and AWS. Works AI-native, using Claude Code, Cursor, and other coding agents daily throughout the development cycle — codebase exploration, implementation, refactoring, testing, and debugging — and builds the MCP infrastructure that connects those agents to real project context, while keeping architecture, review, and production decisions under engineering control.
 
 ## Education
 
@@ -27,8 +27,9 @@ On-premise affiliate marketing platform with source and offer management, retent
 - Monitored and maintained all parts of the system: frontend, backend, and infrastructure.
 - Discussed, designed, and implemented new features.
 - Tracked, investigated, and fixed bugs.
+- Built the project's AI infrastructure: MCP servers exposing the database, Grafana, and GitHub to Claude Code, so agents can query production metrics, investigate issues, implement features, and write tests against real context.
 
-**Technologies:** NestJS, React, Vite, Docker, MySQL
+**Technologies:** NestJS, React, Vite, Docker, MySQL, Claude Code, MCP
 
 ---
 
