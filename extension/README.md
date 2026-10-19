@@ -30,8 +30,11 @@ Claude/OpenAI as you like. When you apply, click **Mark as Applied**.
 
 ## Permissions
 
-`activeTab` + `scripting` (reads the page only when you click), `sidePanel`,
-`storage`. No broad host permissions — the backend's CORS allows the calls.
+`activeTab` + `scripting`, `sidePanel`, `storage` at install time. Host access
+to read page contents is **optional** and requested on demand: the first time
+you click **Analyze**, Chrome asks to allow reading site data — choose **Allow**
+once and it applies to later analyses. Backend calls need no host permission
+(the backend's CORS allows them).
 
 ## Dev watch
 

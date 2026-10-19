@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import * as api from "../lib/api";
-import { captureActiveTab } from "../lib/page";
+import { captureActiveTab, ensurePageAccess } from "../lib/page";
 import { getSettings, isConfigured } from "../lib/storage";
 import type { Analysis, ApplyResult, ProviderName } from "../lib/types";
 
@@ -23,6 +23,7 @@ export function SidePanel() {
     setApplied(null);
     setAnalysis(null);
     try {
+      await ensurePageAccess(); // must be first — keeps the click's user gesture
       const page = await captureActiveTab();
       setPageUrl(page.url);
       const result = await api.analyze({ ...page, provider });

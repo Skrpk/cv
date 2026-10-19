@@ -170,7 +170,8 @@ created on the board (or updated if you'd saved that URL before).
 | `No board configured. Run /api/setup first.` | Do step 8. If the board ID was lost, run it again. |
 | Notion "could not find page" / "not shared" | Share the parent page with the integration (step 1.3). |
 | Setup errors on the **Status** property | Known risk: the Notion API must accept a status property with custom options (it does on API `2025-09-03`). If it's rejected, note the exact error — the fix is to switch the board's stage field to a Select (small backend change in `createBoard` + the apply payload). |
-| "No active tab to read" / analysis is empty | `activeTab` doesn't cover `chrome://` pages, the Chrome Web Store, or some PDFs. Open the panel from a normal web page. |
+| "Cannot access contents of the page…" / "Access to read pages was denied" | The first Analyze click asks to allow reading site data — choose **Allow**. If you dismissed it, click Analyze again. |
+| "No active tab to read" / analysis is empty | Extensions can't read `chrome://` pages, the Chrome Web Store, or some PDFs. Open the panel from a normal web page. |
 | Analysis returns `isJob: false` on a real posting | The page may be behind a login wall so the visible text isn't the JD. Make sure the posting is actually rendered. |
 
 ---

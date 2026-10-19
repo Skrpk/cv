@@ -4,6 +4,24 @@ export interface PageCapture {
   pageText: string;
 }
 
+const HOST_ORIGINS = ["https://*/*", "http://*/*"];
+
+/**
+ * Ensures we can read page contents. activeTab alone is unreliable for a side
+ * panel (the grant is tied to the icon click, not the later Analyze click), so
+ * we request optional host access. Must be called directly from a user gesture
+ * (the Analyze button) and before any other await, or Chrome ignores it.
+ * Resolves immediately without a prompt once granted.
+ */
+export async function ensurePageAccess(): Promise<void> {
+  const granted = await chrome.permissions.request({ origins: HOST_ORIGINS });
+  if (!granted) {
+    throw new Error(
+      "Access to read pages was denied. Click Analyze again and choose Allow.",
+    );
+  }
+}
+
 /**
  * Reads the active tab's visible text. Uses chrome.scripting with the
  * activeTab grant (from the toolbar click that opened the panel) — no broad
