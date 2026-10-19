@@ -1,10 +1,10 @@
 import type { ProviderName } from "../types";
-import type { AnalysisProvider } from "./provider";
+import type { CompletionProvider } from "./provider";
 import { createClaudeProvider } from "./claude";
 import { createOpenAiProvider } from "./openai";
 
 /** Resolves a provider by name, defaulting to Claude. */
-export function getProvider(name: ProviderName = "claude"): AnalysisProvider {
+export function getProvider(name: ProviderName = "claude"): CompletionProvider {
   switch (name) {
     case "openai":
       return createOpenAiProvider();
@@ -14,4 +14,4 @@ export function getProvider(name: ProviderName = "claude"): AnalysisProvider {
   }
 }
 
-export type { AnalysisProvider } from "./provider";
+export type { CompletionProvider } from "./provider";

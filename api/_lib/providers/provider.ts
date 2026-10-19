@@ -1,14 +1,17 @@
-import type { Analysis, ProviderName } from "../types";
+import type { ProviderName } from "../types";
 
-export interface AnalyzeInput {
-  cv: string;
-  jd: string;
-  url: string;
-  title?: string;
+export interface JsonCompletionInput {
+  system: string;
+  user: string;
+  maxTokens?: number;
 }
 
-/** A pluggable LLM backend that turns (CV, JD) into an Analysis. */
-export interface AnalysisProvider {
+/**
+ * A minimal LLM seam: given a system + user prompt, return a JSON string.
+ * Each provider forces JSON its own way (OpenAI json mode, Claude prefill).
+ * All prompt and parsing logic lives in ../analysis.ts, not here.
+ */
+export interface CompletionProvider {
   readonly name: ProviderName;
-  analyze(input: AnalyzeInput): Promise<Analysis>;
+  completeJson(input: JsonCompletionInput): Promise<string>;
 }

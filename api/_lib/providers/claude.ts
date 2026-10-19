@@ -1,19 +1,35 @@
 import Anthropic from "@anthropic-ai/sdk";
-import type { AnalysisProvider, AnalyzeInput } from "./provider";
-import type { Analysis } from "../types";
+import type { CompletionProvider, JsonCompletionInput } from "./provider";
 import { MODELS } from "./models";
 
-export function createClaudeProvider(): AnalysisProvider {
-  const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-
+export function createClaudeProvider(): CompletionProvider {
   return {
     name: "claude",
-    async analyze(_input: AnalyzeInput): Promise<Analysis> {
-      // Phase 2: prompt `client` with the CV + JD using MODELS.claude.analyze
-      // and parse the model's JSON into an Analysis.
-      void client;
-      void MODELS;
-      throw new Error("claude.analyze not implemented yet (Phase 2)");
+    async completeJson({
+      system,
+      user,
+      maxTokens = 1024,
+    }: JsonCompletionInput): Promise<string> {
+      const apiKey = process.env.ANTHROPIC_API_KEY;
+      if (!apiKey) throw new Error("Missing ANTHROPIC_API_KEY");
+
+      const client = new Anthropic({ apiKey });
+      const res = await client.messages.create({
+        model: MODELS.claude.analyze,
+        max_tokens: maxTokens,
+        system,
+        messages: [
+          { role: "user", content: user },
+          // Prefill the assistant turn with "{" so the model must continue
+          // with a JSON object; we prepend it back below.
+          { role: "assistant", content: "{" },
+        ],
+      });
+
+      const body = res.content
+        .map((block) => (block.type === "text" ? block.text : ""))
+        .join("");
+      return "{" + body;
     },
   };
 }

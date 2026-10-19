@@ -1,19 +1,30 @@
 import OpenAI from "openai";
-import type { AnalysisProvider, AnalyzeInput } from "./provider";
-import type { Analysis } from "../types";
+import type { CompletionProvider, JsonCompletionInput } from "./provider";
 import { MODELS } from "./models";
 
-export function createOpenAiProvider(): AnalysisProvider {
-  const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-
+export function createOpenAiProvider(): CompletionProvider {
   return {
     name: "openai",
-    async analyze(_input: AnalyzeInput): Promise<Analysis> {
-      // Phase 2: prompt `client` with the CV + JD using MODELS.openai.analyze
-      // and parse the model's JSON into an Analysis.
-      void client;
-      void MODELS;
-      throw new Error("openai.analyze not implemented yet (Phase 2)");
+    async completeJson({
+      system,
+      user,
+      maxTokens = 1024,
+    }: JsonCompletionInput): Promise<string> {
+      const apiKey = process.env.OPENAI_API_KEY;
+      if (!apiKey) throw new Error("Missing OPENAI_API_KEY");
+
+      const client = new OpenAI({ apiKey });
+      const res = await client.chat.completions.create({
+        model: MODELS.openai.analyze,
+        max_tokens: maxTokens,
+        response_format: { type: "json_object" },
+        messages: [
+          { role: "system", content: system },
+          { role: "user", content: user },
+        ],
+      });
+
+      return res.choices[0]?.message?.content ?? "";
     },
   };
 }
