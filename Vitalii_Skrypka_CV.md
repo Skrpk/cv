@@ -7,7 +7,7 @@
 
 ## Summary
 
-Senior Software Developer with 7+ years of commercial experience in web development and extensive full-stack expertise. Skilled in building reliable, high-quality applications using modern technologies. Demonstrated ability to quickly learn, adapt, and tackle complex challenges. Strong track record in developing systems from scratch, reducing legacy code, and contributing to large-scale migration projects. Experienced with a wide range of front-end and back-end tools, including React.js, Node.js, and AWS. Works AI-native, using Claude Code, Cursor, and other coding agents daily throughout the development cycle — codebase exploration, implementation, refactoring, testing, and debugging — and builds the MCP infrastructure that connects those agents to real project context, while keeping architecture, review, and production decisions under engineering control.
+Senior Software Developer with 7+ years of commercial experience in web development and extensive full-stack expertise. Skilled in building reliable, high-quality applications using modern technologies. Demonstrated ability to quickly learn, adapt, and tackle complex challenges. Strong track record in developing systems from scratch, reducing legacy code, and contributing to large-scale migration projects. Experienced with a wide range of front-end and back-end tools, including TypeScript, React.js, Node.js, and AWS, with TypeScript used end to end across the last three projects. Works AI-native, using Claude Code, Cursor, and other coding agents daily throughout the development cycle — codebase exploration, implementation, refactoring, testing, and debugging — and builds the MCP infrastructure that connects those agents to real project context, while keeping architecture, review, and production decisions under engineering control.
 
 ## Education
 
@@ -23,13 +23,14 @@ Kharkiv National University of Radio Electronics — Kharkiv, Ukraine
 On-premise affiliate marketing platform with source and offer management, retention tooling, and an admin panel. Designed and built the entire project from scratch, including frontend, backend, and infrastructure. The platform handles up to **20,000 visitors per day**.
 
 **Responsibilities:**
-- Designed and built the entire system from scratch.
+- Designed and built the entire system from scratch in TypeScript end to end.
 - Monitored and maintained all parts of the system: frontend, backend, and infrastructure.
 - Discussed, designed, and implemented new features.
 - Tracked, investigated, and fixed bugs.
 - Built the project's AI infrastructure: MCP servers exposing the database, Grafana, and GitHub to Claude Code, so agents can query production metrics, investigate issues, implement features, and write tests against real context.
+- Integrated two custom Claude Code Skills into the workflow — code review against project conventions and test authoring — so every change is checked and covered to the same standard without manual prompting.
 
-**Technologies:** NestJS, React, Vite, Docker, MySQL, Claude Code, MCP
+**Technologies:** TypeScript, NestJS, React, Vite, Docker, MySQL, Claude Code, MCP, Agent Skills
 
 ---
 
@@ -41,13 +42,13 @@ SaaS and e-commerce platforms, including iOS app monitoring, MLM functionality, 
 
 **Responsibilities:**
 - Built multiple landing websites from scratch using Next.js, with content managed via a headless CMS.
-- Developed new backend services and shared packages using Java and Node.js.
+- Developed new backend services and shared TypeScript packages using Node.js and Java.
 - Reduced and refactored legacy code across a large e-commerce platform, covering multiple frontends (Angular/React) and backends (Node.js/Java).
 - Contributed to the migration of authentication logic to Auth0.
 - Participated in the continuous migration of customers between different sales platforms.
 - Took part in a hackathon focused on building an AI-powered chatbot capable of recommending products.
 
-**Technologies:** Next.js, Java, Node.js, Angular, React, Auth0
+**Technologies:** TypeScript, Next.js, Java, Node.js, Angular, React, Auth0
 
 ---
 
@@ -58,10 +59,10 @@ SaaS and e-commerce platforms, including iOS app monitoring, MLM functionality, 
 Online game for iOS and Android with Node.js, AWS, Kubernetes, and Redis on the backend. With more than 100,000 daily users, the system had high requirements for performance and API execution speed.
 
 **Responsibilities:**
-- Implemented backend business logic in a high-load system using Node.js, Redis, and AWS.
-- Developed internal packages and tools to be reused across different projects.
+- Implemented backend business logic in a high-load system using TypeScript, Node.js, Redis, and AWS.
+- Developed internal TypeScript packages and tools to be reused across different projects.
 
-**Technologies:** Node.js, Redis, AWS
+**Technologies:** TypeScript, Node.js, Redis, AWS
 
 ---
 
@@ -75,5 +76,6 @@ E-commerce SaaS platform connecting stylists and clients, along with an ETL and 
 - Built the frontend for an e-commerce application from scratch using React.js and Redux, including both the customer-facing app and multiple admin panels.
 - Developed backend microservices for the e-commerce platform using Node.js, MySQL, PostgreSQL, GCP, and microservice architecture.
 - Created an admin panel and customer analytics system using React.js, Redux, Node.js, GraphQL, and Elasticsearch.
+- Integrate Stripe payment system
 
 **Technologies:** React.js, Redux, Node.js, MySQL, PostgreSQL, GCP, GraphQL, Elasticsearch
