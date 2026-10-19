@@ -90,8 +90,15 @@ fill the same values.
 The backend is the `api/` folder of this repo, deployed as Vercel functions; the
 CV page keeps serving at `/`.
 
-1. Import this repo into Vercel (or push to the branch Vercel builds).
-2. After deploy, check:
+1. Import this repo into Vercel (or push to the branch Vercel builds). The new
+   functions only exist in production **after** this repo is pushed and built —
+   until then `/api/analyze` returns `404 NOT_FOUND` even though the CV page at
+   `/` works.
+2. **Use the canonical host** (the one with `www`, e.g. `https://www.vit-skr.dev`).
+   The bare apex (`vit-skr.dev`) **308-redirects** to `www`, and browsers do not
+   follow redirects on a CORS preflight — so pointing the extension at the apex
+   makes every call fail. Always use the `www` form below and in step 7.
+3. After deploy, check (against the `www` host):
    - `https://<your-domain>/` → your CV page loads.
    - `curl -i -X POST https://<your-domain>/api/analyze` → **401 Unauthorized**.
      That 401 is *correct* — it means the secret guard is active.
@@ -123,8 +130,9 @@ panel.
 
 1. In the side panel, click **⚙** (or open the extension's options).
 2. Set:
-   - **Backend URL** — your deployed domain, e.g. `https://<your-domain>`
-     (no trailing `/api`).
+   - **Backend URL** — your deployed **canonical** domain with `www`, e.g.
+     `https://www.vit-skr.dev` (no trailing `/api`, and not the bare apex —
+     see step 5.2).
    - **Shared secret** — the exact `APP_SHARED_SECRET` from step 4.
    - **Save**.
 
@@ -155,6 +163,8 @@ created on the board (or updated if you'd saved that URL before).
 
 | Symptom | Cause / fix |
 | --- | --- |
+| `404 NOT_FOUND` on `/api/*` (but `/` works) | The new backend isn't deployed yet. Push/deploy the branch Vercel builds. |
+| `308` redirect / CORS preflight failure | You're pointing at the bare apex. Use the canonical `www` host (step 5.2). |
 | `401 Unauthorized` | The extension's secret ≠ `APP_SHARED_SECRET`. Re-save in options. |
 | `500 Missing ANTHROPIC_API_KEY` (or OPENAI/NOTION) | Env var not set, or the project wasn't redeployed after setting it. |
 | `No board configured. Run /api/setup first.` | Do step 8. If the board ID was lost, run it again. |
