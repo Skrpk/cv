@@ -49,8 +49,11 @@ Respond with ONLY a JSON object, no prose, no code fences, matching exactly:
 Rules:
 - If the page is NOT a job posting, set isJob=false, role=null, company=null, matchScore=0, empty arrays, and a one-sentence summary saying it isn't a job posting.
 - matchScore reflects how well THIS candidate fits THIS role, 0 (no fit) to 100 (ideal).
-- strengths: concrete requirements in the JD that the CV clearly meets. Max 6.
-- gaps: requirements in the JD that the CV does not mention or only weakly supports. Max 6.
+- Before judging fit, read the ENTIRE CV: the summary, every role's bullet points, AND every role's "Technologies" line. Those technology lists are authoritative for what the candidate has worked with.
+- A required skill or technology counts as MET if it appears ANYWHERE in the CV — in any role, the summary, or any technologies list — even if named only once. Never report such a skill as a gap.
+- strengths: concrete JD requirements the CV clearly meets. When it is a specific technology, name where it appears (e.g. "Redis — Moonactive"). Max 6.
+- gaps: JD requirements genuinely ABSENT from the whole CV, or only weakly supported. Re-scan every technologies list before adding one — never list a gap for a skill that is present anywhere in the CV. Max 6.
+- role and company: take them ONLY from the job page text. If the company is not clearly stated there, set company=null rather than guessing.
 - tips: short, actionable ways the candidate could tailor their application to this role. Max 3.
 - summary: 2-3 sentences, plain and specific.
 - Base everything ONLY on the provided CV and JD. Never invent experience the CV does not state.`;
