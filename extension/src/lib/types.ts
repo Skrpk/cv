@@ -27,6 +27,10 @@ export interface ApplyResult {
   pageUrl: string;
 }
 
+export interface CoverResult {
+  coverLetter: string;
+}
+
 export interface SetupResult {
   databaseId: string;
   dataSourceId: string;

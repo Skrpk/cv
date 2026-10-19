@@ -71,7 +71,7 @@ export function buildUserPrompt(input: AnalyzeInput): string {
     .join("\n");
 }
 
-function extractJson(raw: string): Record<string, unknown> {
+export function extractJson(raw: string): Record<string, unknown> {
   const t = raw.trim();
   try {
     return JSON.parse(t) as Record<string, unknown>;

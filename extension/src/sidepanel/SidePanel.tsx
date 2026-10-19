@@ -1,33 +1,42 @@
 import { useEffect, useState } from "react";
 import * as api from "../lib/api";
-import { captureActiveTab, ensurePageAccess } from "../lib/page";
+import { captureActiveTab, ensurePageAccess, type PageCapture } from "../lib/page";
 import { getSettings, isConfigured } from "../lib/storage";
 import type { Analysis, ApplyResult, ProviderName } from "../lib/types";
+
+type Busy = "analyze" | "apply" | "cover" | null;
 
 export function SidePanel() {
   const [configured, setConfigured] = useState<boolean | null>(null);
   const [provider, setProvider] = useState<ProviderName>("claude");
-  const [busy, setBusy] = useState<"analyze" | "apply" | null>(null);
+  const [busy, setBusy] = useState<Busy>(null);
   const [error, setError] = useState<string | null>(null);
   const [analysis, setAnalysis] = useState<Analysis | null>(null);
-  const [pageUrl, setPageUrl] = useState<string>("");
+  const [capture, setCapture] = useState<PageCapture | null>(null);
   const [applied, setApplied] = useState<ApplyResult | null>(null);
+  const [cover, setCover] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     getSettings().then((s) => setConfigured(isConfigured(s)));
   }, []);
 
+  function resetResults() {
+    setError(null);
+    setAnalysis(null);
+    setApplied(null);
+    setCover(null);
+    setCopied(false);
+  }
+
   async function onAnalyze() {
     setBusy("analyze");
-    setError(null);
-    setApplied(null);
-    setAnalysis(null);
+    resetResults();
     try {
       await ensurePageAccess(); // must be first — keeps the click's user gesture
       const page = await captureActiveTab();
-      setPageUrl(page.url);
-      const result = await api.analyze({ ...page, provider });
-      setAnalysis(result);
+      setCapture(page);
+      setAnalysis(await api.analyze({ ...page, provider }));
     } catch (e) {
       setError(e instanceof Error ? e.message : "Analysis failed.");
     } finally {
@@ -36,16 +45,41 @@ export function SidePanel() {
   }
 
   async function onApply() {
-    if (!analysis) return;
+    if (!analysis || !capture) return;
     setBusy("apply");
     setError(null);
     try {
-      const result = await api.apply({ url: pageUrl, analysis });
-      setApplied(result);
+      setApplied(await api.apply({ url: capture.url, analysis }));
     } catch (e) {
       setError(e instanceof Error ? e.message : "Saving to Notion failed.");
     } finally {
       setBusy(null);
+    }
+  }
+
+  async function onCover() {
+    if (!capture) return;
+    setBusy("cover");
+    setError(null);
+    setCopied(false);
+    try {
+      const result = await api.cover({ ...capture, provider });
+      setCover(result.coverLetter);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Generating the cover letter failed.");
+    } finally {
+      setBusy(null);
+    }
+  }
+
+  async function copyCover() {
+    if (!cover) return;
+    try {
+      await navigator.clipboard.writeText(cover);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      setError("Couldn't copy to clipboard.");
     }
   }
 
@@ -163,12 +197,33 @@ export function SidePanel() {
                   ? "Saved to Notion ✓"
                   : "Mark as Applied"}
             </button>
+            <button className="secondary" onClick={onCover} disabled={busy !== null}>
+              {busy === "cover" ? "Writing…" : "Generate cover letter"}
+            </button>
             {applied && (
               <a href={applied.pageUrl} target="_blank" rel="noreferrer">
                 Open card ({applied.action})
               </a>
             )}
           </div>
+
+          {cover && (
+            <>
+              <div className="row" style={{ marginTop: 16 }}>
+                <h2 style={{ margin: 0 }}>Cover letter</h2>
+                <span className="spacer" />
+                <button className="secondary" onClick={copyCover}>
+                  {copied ? "Copied ✓" : "Copy"}
+                </button>
+              </div>
+              <textarea
+                value={cover}
+                readOnly
+                rows={16}
+                style={{ marginTop: 8, resize: "vertical" }}
+              />
+            </>
+          )}
         </>
       )}
     </div>

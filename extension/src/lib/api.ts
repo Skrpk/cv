@@ -3,6 +3,7 @@ import type {
   Analysis,
   AnalyzeRequest,
   ApplyResult,
+  CoverResult,
   SetupResult,
 } from "./types";
 
@@ -40,6 +41,10 @@ export function analyze(input: AnalyzeRequest): Promise<Analysis> {
 
 export function apply(input: { url: string; analysis: Analysis }): Promise<ApplyResult> {
   return post<ApplyResult>("/api/apply", input);
+}
+
+export function cover(input: AnalyzeRequest): Promise<CoverResult> {
+  return post<CoverResult>("/api/cover", input);
 }
 
 export function setup(parentPageId: string): Promise<SetupResult> {
