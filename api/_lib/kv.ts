@@ -1,34 +1,42 @@
-import { Redis } from "@upstash/redis";
+import { createClient, type RedisClientType } from "redis";
 import type { Board } from "./types";
 
 // Small operational config and (later) agent state — never Applications
 // themselves. Notion is the source of truth for those.
 // See docs/adr/0001-notion-as-source-of-truth.md.
 //
-// Backed by Upstash Redis (the Vercel Marketplace "Redis" integration).
-// Vercel injects KV_REST_API_URL / KV_REST_API_TOKEN; Upstash's own naming is
-// UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN. Accept either.
+// Uses a standard Redis connection string (REDIS_URL), which every Vercel
+// Marketplace Redis integration injects. The connected client is cached across
+// warm invocations.
 
-let client: Redis | null = null;
+let clientPromise: Promise<RedisClientType> | null = null;
 
-function redis(): Redis {
-  if (client) return client;
-  const url = process.env.KV_REST_API_URL ?? process.env.UPSTASH_REDIS_REST_URL;
-  const token =
-    process.env.KV_REST_API_TOKEN ?? process.env.UPSTASH_REDIS_REST_TOKEN;
-  if (!url || !token) {
-    throw new Error("Redis is not configured (missing KV_REST_API_URL/TOKEN)");
+async function getClient(): Promise<RedisClientType> {
+  if (!clientPromise) {
+    const url = process.env.REDIS_URL;
+    if (!url) throw new Error("Missing REDIS_URL");
+    const client: RedisClientType = createClient({ url });
+    // Prevent a transient socket error from crashing the function.
+    client.on("error", () => {});
+    clientPromise = client.connect();
   }
-  client = new Redis({ url, token });
-  return client;
+  try {
+    return await clientPromise;
+  } catch (err) {
+    clientPromise = null; // let the next call retry a fresh connection
+    throw err;
+  }
 }
 
 const BOARD_KEY = "notion:board";
 
 export async function getBoard(): Promise<Board | null> {
-  return (await redis().get<Board>(BOARD_KEY)) ?? null;
+  const client = await getClient();
+  const raw = await client.get(BOARD_KEY);
+  return raw ? (JSON.parse(raw) as Board) : null;
 }
 
 export async function setBoard(board: Board): Promise<void> {
-  await redis().set(BOARD_KEY, board);
+  const client = await getClient();
+  await client.set(BOARD_KEY, JSON.stringify(board));
 }

@@ -43,11 +43,11 @@ and Chrome. Roughly 20 minutes the first time.
 The backend remembers your board's ID in Redis.
 
 1. In the Vercel dashboard, open your project → **Storage** → **Create** →
-   choose **Redis** (Upstash, from the Marketplace) → connect it to this project.
-2. This injects the connection env vars automatically (either
-   `KV_REST_API_URL` / `KV_REST_API_TOKEN` or `UPSTASH_REDIS_REST_URL` /
-   `UPSTASH_REDIS_REST_TOKEN`). The backend accepts either naming — no action
-   needed beyond connecting the store.
+   choose a **Redis** integration from the Marketplace → connect it to this
+   project.
+2. This injects a **`REDIS_URL`** connection string automatically. The backend
+   reads that — no action needed beyond connecting the store (and redeploying so
+   the new env var is picked up).
 
 ---
 

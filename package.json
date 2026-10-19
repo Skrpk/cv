@@ -15,7 +15,7 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.135.0",
     "@notionhq/client": "^5.27.1",
-    "@upstash/redis": "^1.39.0",
-    "openai": "^7.39.0"
+    "openai": "^7.39.0",
+    "redis": "^6.3.0"
   }
 }
