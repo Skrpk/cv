@@ -1,7 +1,13 @@
-const fs = require("node:fs");
-const path = require("node:path");
+import type { VercelRequest, VercelResponse } from "@vercel/node";
+import fs from "node:fs";
+import path from "node:path";
 
-module.exports = function handler(request, response) {
+// Serves the CV page at `/` (see vercel.json rewrite). Unchanged behaviour
+// from the original api/index.js, now in TypeScript.
+export default function handler(
+  request: VercelRequest,
+  response: VercelResponse,
+): VercelResponse | void {
   if (request.method !== "GET" && request.method !== "HEAD") {
     response.setHeader("Allow", "GET, HEAD");
     return response.status(405).send("Method Not Allowed");
@@ -19,4 +25,4 @@ module.exports = function handler(request, response) {
   );
 
   return response.status(200).send(request.method === "HEAD" ? "" : html);
-};
+}

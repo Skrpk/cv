@@ -1,8 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
-    "api/index.js": {
+    "api/index.ts": {
       "includeFiles": "standalone.html"
+    },
+    "api/analyze.ts": {
+      "includeFiles": "Vitalii_Skrypka_CV.md"
     }
   },
   "rewrites": [
