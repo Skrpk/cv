@@ -1,10 +1,11 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { preflight, cors, methodNotAllowed } from "./_lib/http";
 import { requireSecret } from "./_lib/auth";
-import type { ApplyRequest, ApplyResult } from "./_lib/types";
+import { getBoard } from "./_lib/kv";
+import { upsertApplication } from "./_lib/notion";
+import type { ApplyRequest } from "./_lib/types";
 
 // POST /api/apply — records an Application on the Board (dedupe by URL).
-// Phase 1: validates + returns a stub result. Phase 3 wires Notion.
 export default async function handler(
   req: VercelRequest,
   res: VercelResponse,
@@ -19,11 +20,22 @@ export default async function handler(
     return res.status(400).json({ error: "Expected { url, analysis }" });
   }
 
-  // TODO Phase 3: getNotionDatabaseId() + upsertApplication(dbId, url, analysis).
-  const stub: ApplyResult = {
-    action: "created",
-    pageId: "stub-page-id",
-    pageUrl: "https://www.notion.so/stub-page-id",
-  };
-  return res.status(200).json(stub);
+  try {
+    const board = await getBoard();
+    if (!board) {
+      return res
+        .status(400)
+        .json({ error: "No board configured. Run /api/setup first." });
+    }
+    const result = await upsertApplication(
+      board.dataSourceId,
+      body.url,
+      body.analysis,
+    );
+    return res.status(200).json(result);
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : "Unknown error";
+    const status = msg.startsWith("Missing ") ? 500 : 502;
+    return res.status(status).json({ error: msg });
+  }
 }

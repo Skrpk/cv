@@ -48,12 +48,18 @@ export interface ApplyResult {
   pageUrl: string;
 }
 
+/** The created Board: a Notion database plus the data source we read/write. */
+export interface Board {
+  databaseId: string;
+  dataSourceId: string;
+  url: string;
+}
+
 /** Request body for POST /api/setup. */
 export interface SetupRequest {
   parentPageId: string;
 }
 
-export interface SetupResult {
-  databaseId: string;
+export interface SetupResult extends Board {
   created: boolean;
 }

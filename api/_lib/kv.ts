@@ -1,4 +1,5 @@
 import { Redis } from "@upstash/redis";
+import type { Board } from "./types";
 
 // Small operational config and (later) agent state — never Applications
 // themselves. Notion is the source of truth for those.
@@ -22,12 +23,12 @@ function redis(): Redis {
   return client;
 }
 
-const NOTION_DB_KEY = "notion:databaseId";
+const BOARD_KEY = "notion:board";
 
-export async function getNotionDatabaseId(): Promise<string | null> {
-  return (await redis().get<string>(NOTION_DB_KEY)) ?? null;
+export async function getBoard(): Promise<Board | null> {
+  return (await redis().get<Board>(BOARD_KEY)) ?? null;
 }
 
-export async function setNotionDatabaseId(id: string): Promise<void> {
-  await redis().set(NOTION_DB_KEY, id);
+export async function setBoard(board: Board): Promise<void> {
+  await redis().set(BOARD_KEY, board);
 }
