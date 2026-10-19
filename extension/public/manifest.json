@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "CV Job Assistant",
+  "version": "0.1.0",
+  "description": "Analyze the job posting you're viewing against your CV, and track applications on a Notion board.",
+  "permissions": ["activeTab", "scripting", "sidePanel", "storage"],
+  "action": { "default_title": "CV Job Assistant" },
+  "side_panel": { "default_path": "sidepanel.html" },
+  "options_page": "options.html",
+  "background": { "service_worker": "background.js" }
+}
